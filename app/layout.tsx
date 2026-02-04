@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Website Sales Agent | Automate Your Web Design Sales",
+  title: "The Website Client Machine | Automate Your Web Design Sales",
   description: "The AI-powered system that finds businesses without websites, builds a demo, and hands you the lead ready to close.",
 };
 

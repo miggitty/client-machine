@@ -552,8 +552,8 @@ function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
             <Bot className="w-5 h-5 text-white" />
           </div>
-          Website<span className="text-indigo-400">Sales</span>
-          <span className="text-cyan-400">Agent</span>
+          The Website<span className="text-indigo-400">Client</span>
+          <span className="text-cyan-400">Machine</span>
         </motion.div>
 
         {/* Countdown Timer - Center */}
@@ -703,7 +703,7 @@ function Hero({ onOpenModal }: { onOpenModal: () => void }) {
                   </div>
                   <div className="flex-1 mx-4">
                     <div className="bg-slate-800/50 rounded-lg px-4 py-1.5 text-xs text-slate-500 font-mono">
-                      websitesalesagent.com/dashboard
+                      thewebsiteclientmachine.com/dashboard
                     </div>
                   </div>
                 </div>
@@ -948,7 +948,7 @@ function SolutionSection({ onOpenModal }: { onOpenModal: () => void }) {
 
               <div className="mt-10 pt-8 border-t border-white/10">
                 <p className="text-3xl font-bold text-gradient mb-8">
-                  This is Website Sales Agent.
+                  This is The Website Client Machine.
                 </p>
                 <MagneticButton onClick={onOpenModal} className="group px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 text-white font-bold text-lg shadow-2xl shadow-indigo-500/25 cursor-pointer inline-flex items-center gap-3">
                   <span>I Want This System</span>
@@ -1664,10 +1664,10 @@ function Footer() {
             <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
               <Bot className="w-4 h-4 text-white" />
             </div>
-            <span className="font-semibold text-white">Website Sales Agent</span>
+            <span className="font-semibold text-white">The Website Client Machine</span>
           </div>
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} Website Sales Agent. All rights reserved.
+            &copy; {new Date().getFullYear()} The Website Client Machine. All rights reserved.
           </p>
         </div>
       </div>
