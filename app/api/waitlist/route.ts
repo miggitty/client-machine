@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const GHL_API_URL = "https://services.leadconnectorhq.com/contacts/upsert";
+const GHL_API_URL = "https://services.leadconnectorhq.com/contacts/";
 
 export async function POST(request: NextRequest) {
   try {

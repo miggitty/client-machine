@@ -173,6 +173,31 @@ function AnimatedCounter({ value, suffix = "", prefix = "", duration = 2 }: { va
   );
 }
 
+// --- Country Code Data ---
+
+const COUNTRIES = [
+  { code: "US", name: "United States", dial: "+1", flag: "🇺🇸", placeholder: "(555) 123-4567", pattern: "^[\\d\\s\\-\\(\\)]{10,14}$" },
+  { code: "AU", name: "Australia", dial: "+61", flag: "🇦🇺", placeholder: "412 345 678", pattern: "^[\\d\\s]{9,12}$" },
+  { code: "CA", name: "Canada", dial: "+1", flag: "🇨🇦", placeholder: "(555) 123-4567", pattern: "^[\\d\\s\\-\\(\\)]{10,14}$" },
+  { code: "GB", name: "United Kingdom", dial: "+44", flag: "🇬🇧", placeholder: "7911 123456", pattern: "^[\\d\\s]{10,12}$" },
+  { code: "NZ", name: "New Zealand", dial: "+64", flag: "🇳🇿", placeholder: "21 123 4567", pattern: "^[\\d\\s]{8,11}$" },
+  { code: "DE", name: "Germany", dial: "+49", flag: "🇩🇪" },
+  { code: "FR", name: "France", dial: "+33", flag: "🇫🇷" },
+  { code: "ES", name: "Spain", dial: "+34", flag: "🇪🇸" },
+  { code: "IT", name: "Italy", dial: "+39", flag: "🇮🇹" },
+  { code: "NL", name: "Netherlands", dial: "+31", flag: "🇳🇱" },
+  { code: "IE", name: "Ireland", dial: "+353", flag: "🇮🇪" },
+  { code: "SG", name: "Singapore", dial: "+65", flag: "🇸🇬" },
+  { code: "IN", name: "India", dial: "+91", flag: "🇮🇳" },
+  { code: "JP", name: "Japan", dial: "+81", flag: "🇯🇵" },
+  { code: "BR", name: "Brazil", dial: "+55", flag: "🇧🇷" },
+  { code: "MX", name: "Mexico", dial: "+52", flag: "🇲🇽" },
+  { code: "ZA", name: "South Africa", dial: "+27", flag: "🇿🇦" },
+  { code: "AE", name: "UAE", dial: "+971", flag: "🇦🇪" },
+  { code: "PH", name: "Philippines", dial: "+63", flag: "🇵🇭" },
+  { code: "SE", name: "Sweden", dial: "+46", flag: "🇸🇪" },
+];
+
 // --- Waitlist Modal Component ---
 
 function WaitlistModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -182,21 +207,38 @@ function WaitlistModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
     email: "",
     phone: ""
   });
+  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
+  const validatePhone = (phone: string, country: typeof COUNTRIES[0]) => {
+    if (!phone) return true;
+    if (!country.pattern) return true;
+    const regex = new RegExp(country.pattern);
+    return regex.test(phone);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validatePhone(formData.phone, selectedCountry)) {
+      setPhoneError(`Please enter a valid ${selectedCountry.name} phone number`);
+      return;
+    }
+
     setIsSubmitting(true);
     setError("");
+    setPhoneError("");
 
     try {
+      const fullPhone = formData.phone ? `${selectedCountry.dial} ${formData.phone}` : "";
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, phone: fullPhone }),
       });
 
       if (!response.ok) {
@@ -302,16 +344,43 @@ function WaitlistModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-2">
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
-                      placeholder="+1 (555) 123-4567"
-                    />
+                    <div className="flex gap-2">
+                      <select
+                        value={selectedCountry.code}
+                        onChange={(e) => {
+                          const country = COUNTRIES.find(c => c.code === e.target.value);
+                          if (country) {
+                            setSelectedCountry(country);
+                            setPhoneError("");
+                          }
+                        }}
+                        className="w-28 px-2 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+                      >
+                        {COUNTRIES.map((country) => (
+                          <option key={country.code} value={country.code}>
+                            {country.flag} {country.dial}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={(e) => {
+                          handleChange(e);
+                          setPhoneError("");
+                        }}
+                        required
+                        className={`flex-1 px-4 py-3 rounded-xl bg-slate-800/50 border text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 transition-all ${
+                          phoneError ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : "border-white/10 focus:border-indigo-500 focus:ring-indigo-500/20"
+                        }`}
+                        placeholder={selectedCountry.placeholder || "123 456 7890"}
+                      />
+                    </div>
+                    {phoneError && (
+                      <p className="mt-2 text-red-400 text-sm">{phoneError}</p>
+                    )}
                   </div>
 
                   {error && (
