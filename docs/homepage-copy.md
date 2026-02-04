@@ -41,7 +41,7 @@ Meanwhile, you watch other designers landing client after client and wonder what
 
 Here's what they know: **The best clients don't come from waiting. They come from making offers so good, people feel stupid saying no.**
 
-And right now, there are millions of local businesses in Australia and the US with no website at all. They're invisible online. Losing customers every day. And they have no idea how to fix it.
+And right now, there are millions of local businesses worldwide with no website at all. They're invisible online. Losing customers every day. And they have no idea how to fix it.
 
 You're about to become the person who shows them.
 
@@ -80,7 +80,7 @@ That's not selling. That's helping. And it converts like crazy.
 How It Works (In 3 Simple Steps)
 
 **Step 1: Import Your Leads**
-Scrape Google Maps for any industry in any location. Plumbers in Sydney. Dentists in Dallas. Landscapers in Melbourne. Get 1,000 businesses without websites in minutes. Cost: $3.
+Scrape Google Maps for any industry in any location. Plumbers in London. Dentists in New York. Landscapers in Toronto. Get 1,000 businesses without websites in minutes. Cost: $3.
 
 **Step 2: Demo Sites Auto-Generate**
 Our AI builds a demo website for every single lead—automatically. Their business name. Their contact info. A professional template for their industry. Zero manual work from you.
@@ -218,7 +218,7 @@ Everything You Get for $500
 - AI-powered demo site generator (instant sites for every lead)
 - Built-in CRM to manage contacts, calls, and follow-ups
 - SMS and email sending to deliver demo links instantly
-- Works for any industry, any location in Australia or the US
+- Works for any industry, any location worldwide
 
 **10 Marketing-Optimized Website Templates:**
 - Proven templates refined over 10 years of real-world testing
@@ -268,7 +268,6 @@ This Is For You If...
 - You're not willing to do cold outreach (this requires calling leads)
 - You want a completely passive, done-for-you business
 - You're looking for a get-rich-quick scheme
-- You're not in Australia or the United States
 
 ---
 
@@ -329,7 +328,7 @@ A: We include scripts and training on exactly what to say. Plus, you're not cold
 A: No. You pay $500 once and own the system. The only ongoing cost is the API for leads—about $3 per 1,000 businesses.
 
 **Q: What countries does this work in?**
-A: Currently optimized for Australia and the United States.
+A: This system works worldwide. You can find leads and build sites for businesses in any country.
 
 **Q: What happens after I join the waitlist?**
 A: You'll get an email when we launch (14 days). First 10 people to purchase get access at $500. After that, price goes to $1,000.
